@@ -23,10 +23,18 @@
 4 - Armas
 	4.0 - função de armas 
 		4.1 - atirar multiplas armas -- feito
-			4.1.1 - arrumar o fato da array cd - a fazer
+			4.1.1 - arrumar o fato da array cd - feito e foi coisa besta
 		4.2 - armas
 			4.2.1 - pistola -- feito
 			4.2.3 - shotgun -- feito, mas melhorar depois
 			4.2.4 - minigun -- feito
 			4.2.5 - bomba 
-		
+
+5 - Interface
+	5.1 Botoes das armas
+		5.1.1 - adicionar arma
+		5.1.2 - remover arma
+
+6 - hitboxes
+
+7 - state machine dos inimigos

@@ -5,9 +5,9 @@
 vel = 3
 lastKey = 0
 
-weapons = ["minigun"];
+weapons = ["minigun", "shotgun"];
 
-cds = [10,30,5]
+cds = [3, 25]
 
 for (var i = 0;i<9;i++){
 	alarm[i] = 0;	
@@ -22,19 +22,19 @@ atirar = function(){
 				case "pistol":
 					if (alarm[0] == -1){
 						pistol()
-						alarm[0] = cds[0]
+						alarm[0] = cds[i]
 					} 
 					break;
 				case "shotgun":
 					if (alarm[1] == -1){
 						shotgun()
-						alarm[1] = cds[1]
+						alarm[1] = cds[i]
 					}
 					break;
 				case "minigun":
 					if (alarm[2] == -1){
 						minigun()
-						alarm[2] = cds[2]
+						alarm[2] = cds[i]
 					}
 					break;
 			}
