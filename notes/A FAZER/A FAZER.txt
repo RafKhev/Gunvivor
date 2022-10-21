@@ -1,0 +1,32 @@
+1 - Movimento do jogador
+	1.1 - Movimento básico - feito
+	1.2 - Mudar a direção - feito
+	1.3 - Atirar na direção - feito
+		1.3.1 - Timer de tiro - feito
+		1.3.2 - consertar o timer do tiro - feito
+	
+2 - inimigo
+	1.0 - objeto do inimigo
+	1.1 - movimentação do inimigo
+		1.1.1 - inimigo muda a direção -- feito
+		1.1.2 - inimigo anda lentamente até o jogador -- feito
+	1.2 - animação de spawn do inimigo
+		1.2.1 - cria um objeto de aviso com um timer - feito
+		1.2.2 - cria o inimigo quando o timer acabar - feito
+	1.3 - hordas de inimigos 
+		1.3.1 - quando não houver mais inimigos na tela, criar mais -- feito
+		1.3.2 - função para criar hordas
+
+3 - subir de nivel
+	3.0 - função de subir de nivel -- FEITO
+	
+4 - Armas
+	4.0 - função de armas 
+		4.1 - atirar multiplas armas -- feito
+			4.1.1 - arrumar o fato da array cd - a fazer
+		4.2 - armas
+			4.2.1 - pistola -- feito
+			4.2.3 - shotgun -- feito, mas melhorar depois
+			4.2.4 - minigun -- feito
+			4.2.5 - bomba 
+		
