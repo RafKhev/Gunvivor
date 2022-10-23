@@ -19,19 +19,19 @@ s_right = vk_right;
 switch(keyboard_key){
 	
 	case s_right:
-		show_debug_message("right")
+		//show_debug_message("right")
 		setDirection(0)
 		break
 	case s_up:
-		show_debug_message("up")
+		//show_debug_message("up")
 		setDirection(90)
 		break
 	case s_left:
-		show_debug_message("left")
+		//show_debug_message("left")
 		setDirection(180)
 		break
 	case s_down:
-		show_debug_message("down")
+		//show_debug_message("down")
 		setDirection(270)
 		break
 	

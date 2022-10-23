@@ -1,16 +1,60 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-//@TODO arrumar o sistema de atirar multiplas armas
 vel = 3
 lastKey = 0
 
-weapons = ["minigun", "shotgun"];
-
-cds = [3, 25]
-
 for (var i = 0;i<9;i++){
 	alarm[i] = 0;	
+}
+
+setDirection = function(dir){
+	if (!keyboard_check(vk_space)){
+		lastKey = keyboard_key
+		direction = dir
+		image_angle = direction
+		//show_debug_message(lastKey)
+		return
+	}
+}
+
+function my_array_delete(arr, pos) {
+    var arr_len = array_length(arr);
+    if (arr_len > 0 && pos >= 0 && pos < arr_len) {
+        var new_arr = array_create(arr_len-1);
+        array_copy(new_arr, 0, arr, 0, pos);
+        array_copy(new_arr, pos, arr, pos+1, arr_len-(pos+1));
+        return new_arr;
+    } else {
+        return arr;
+    }
+}
+
+//--------------------------------------------//
+//ARMAS
+//--------------------------------------------//
+
+//weapons = ["minigun", "shotgun","pistol"];
+weapons = []
+//cds = [3, 25, 10]
+cds =[]
+
+
+
+addWeapon = function(weapon, _cd){
+	array_push(weapons, weapon)
+	array_push(cds, _cd)
+	show_debug_message("adiciounou " + weapon + " recarga: " + string(_cd)) 
+}
+
+removeWeapon = function(weapon){
+	for (var i=0;i<array_length(weapons);i++){
+		if weapon == weapons[i]{
+			weapons = my_array_delete(weapons,i);
+			cds = my_array_delete(cds,i)
+			show_debug_message("removeu " + weapon)
+		}
+	}
 }
 
 atirar = function(){
@@ -52,18 +96,7 @@ atirar = function(){
 	
 }
 
-setDirection = function(dir){
-	if (!keyboard_check(vk_space)){
-		lastKey = keyboard_key
-		direction = dir
-		image_angle = direction
-		show_debug_message(lastKey)
-		return
-	}
-}
-
 pistol = function(){
-	cooldown = 25
 	
 	var bullet1 = obj_bullet
 
@@ -75,7 +108,6 @@ pistol = function(){
 }
 
 shotgun = function(){
-	cooldown = 40
 	
 	var b = obj_bullet
 	
