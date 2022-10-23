@@ -32,8 +32,8 @@
 
 5 - Interface
 	5.1 Botoes das armas
-		5.1.1 - adicionar arma
-		5.1.2 - remover arma
+		5.1.1 - adicionar arma - feito
+		5.1.2 - remover arma - feito
 
 6 - hitboxes
 
