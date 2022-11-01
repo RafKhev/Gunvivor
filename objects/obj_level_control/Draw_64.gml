@@ -7,4 +7,3 @@ draw_text(20,60,"Level: "+ string(level)+"\nEXP: "+string(exp_current)+"/"+strin
 
 
 
-

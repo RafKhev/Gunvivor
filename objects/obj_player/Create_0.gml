@@ -34,9 +34,11 @@ function my_array_delete(arr, pos) {
 //ARMAS
 //--------------------------------------------//
 
-weapons = ["minigun", "shotgun","pistol"];
+//weapons = ["minigun","shotgun","pistol"];
+weapons = ["bomb"]
 
-cds = [3, 25, 17]
+//cds = [1, 25, 17]
+cds = [25]
 
 
 addWeapon = function(weapon, _cd){
@@ -79,6 +81,11 @@ atirar = function(){
 						alarm[2] = cds[i]
 					}
 					break;
+				case "bomb":
+					if (alarm[3] == -1){
+						bomb()
+						alarm[3] = cds[i]
+					}
 			}
 			
 		}
@@ -89,8 +96,6 @@ atirar = function(){
 	//	alarm[1] = cd2
 	//	shotgun()
 	//}
-	
-	
 	
 }
 
@@ -122,9 +127,18 @@ shotgun = function(){
 minigun = function(){
 	var b = obj_bullet
 	var initial_angle = direction
-	var new_angle = irandom_range(initial_angle-15,initial_angle+15)
+	var new_angle = irandom_range(initial_angle-20,initial_angle+20)
 	
 	var b1 = instance_create_layer(x,y,"tiros",b)
 	b1.direction = new_angle
 	b1.image_angle = direction
+	
 }
+	
+bomb = function(){
+	var b = obj_bomba
+	
+	var b1 = instance_create_layer(x,y,"tiros",b)
+	b1.direction = direction
+}
+

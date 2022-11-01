@@ -5,6 +5,3 @@ alarm[0] = 60
 passEnemy = function(_en){
 	enemy = _en
 }
-
-
-

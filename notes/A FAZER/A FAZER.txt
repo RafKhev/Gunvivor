@@ -34,7 +34,8 @@
 	5.1 Botoes das armas
 		5.1.1 - adicionar arma - feito
 		5.1.2 - remover arma - feito
-
+	5.2 Abre ao subir de nivel - nao tenho ideia de como fazer
+		
 6 - hitboxes
 
 7 - state machine dos inimigos

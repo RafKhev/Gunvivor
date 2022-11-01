@@ -52,5 +52,9 @@ if(keyboard_check(ord("q"))){
 	vel=5;
 }
 
+//-----------------testes raio
 
+if(keyboard_check(ord("q"))){
+	
+}
 

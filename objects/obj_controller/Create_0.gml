@@ -3,6 +3,8 @@
 
 enemy_count = 0
 
+random_set_seed(room_speed)
+
 spawn_enemy = function(_enemy, amount){
 	
 	repeat(amount){
@@ -14,5 +16,4 @@ spawn_enemy = function(_enemy, amount){
 		
 		enemy_count++
 	}
-
 }
