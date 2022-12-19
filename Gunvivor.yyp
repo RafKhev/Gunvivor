@@ -22,6 +22,8 @@
     {"id":{"name":"Script1","path":"scripts/Script1/Script1.yy",},"order":0,},
     {"id":{"name":"obj_bullet","path":"objects/obj_bullet/obj_bullet.yy",},"order":1,},
     {"id":{"name":"obj_bomba","path":"objects/obj_bomba/obj_bomba.yy",},"order":0,},
+    {"id":{"name":"spr_weapon_sprites","path":"sprites/spr_weapon_sprites/spr_weapon_sprites.yy",},"order":9,},
+    {"id":{"name":"spr_upgrade","path":"sprites/spr_upgrade/spr_upgrade.yy",},"order":8,},
     {"id":{"name":"obj_selector","path":"objects/obj_selector/obj_selector.yy",},"order":7,},
     {"id":{"name":"spr_select","path":"sprites/spr_select/spr_select.yy",},"order":3,},
     {"id":{"name":"Ambiente1","path":"rooms/Ambiente1/Ambiente1.yy",},"order":0,},

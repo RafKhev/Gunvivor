@@ -35,10 +35,10 @@ function my_array_delete(arr, pos) {
 //--------------------------------------------//
 
 //weapons = ["minigun","shotgun","pistol"];
-weapons = ["bomb"]
+weapons = ["pistol"]
 
 //cds = [1, 25, 17]
-cds = [25]
+cds = [17]
 
 
 addWeapon = function(weapon, _cd){
