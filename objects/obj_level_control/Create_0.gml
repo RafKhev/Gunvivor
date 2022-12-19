@@ -15,16 +15,17 @@ ganha_xp = function(_xp){
 		}
 }
 
-weapon_list = ["Pistol", "Shotgun", "Minigun", "Bomb"];
-
-//for (i=0;i<array_length(obj_player.weapons);i++){
-//	array_push(weapon_list, obj_player.weapons[i])
-//}
+//---------------------------------------------------------//
 
 upgradeWindowActive = false;
 upgradeSpriteIndex = [];
-upgrade_list = ["Dano", "Velocidade", "Tamanho", "Perfurar"]
+upgradeItemsCooldown = [0,0,0,0];
 
+upgrade_list = ["Dano", "Velocidade", "Tamanho", "Perfurar"]
+weapon_list = ["pistol", "shotgun", "minigun", "bomb"];
+cooldown_list = [30, 60, 4, 150];
+
+//-------------------------------------------------------//
 levelup = function(){
 	
 	for (i=0;i<3;i++){ //Pega uma arma aleatória do vetor weapon_list
@@ -39,7 +40,10 @@ levelup = function(){
 		upgradeItems[i] = weapon_list[r];
 		upgradeSpriteIndex[i] = r;
 		upgradeTypes[i] = upgrade_list[b];
-		show_debug_message(string(i) + ":" + upgradeItems[i]);
+		upgradeItemsCooldown[i] = cooldown_list[r];
+		show_debug_message(upgradeItemsCooldown[r])
+		
+		//show_debug_message(string(i) + ":" + upgradeItems[i] + ":" + upgradeItemsCooldown[i]);
 	}
 
 	

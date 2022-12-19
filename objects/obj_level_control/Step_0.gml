@@ -8,13 +8,18 @@ var select3 = keyboard_check_pressed(51);
 
 
 if (select1){
+	
 	show_debug_message("Melhorou: " + upgradeItems[0]);
+	obj_player.addWeapon(upgradeItems[0], upgradeItemsCooldown[0]);
 	upgradeWindowActive = false;
 }else if(select2){
 	show_debug_message("Melhorou: " + upgradeItems[1]);
+	obj_player.addWeapon(upgradeItems[1], upgradeItemsCooldown[1]);
 	upgradeWindowActive = false;
 }else if(select3){
+	
 	show_debug_message("Melhorou: " + upgradeItems[2]);
+	obj_player.addWeapon(upgradeItems[2], upgradeItemsCooldown[2]);
 	upgradeWindowActive = false;
 }
 
