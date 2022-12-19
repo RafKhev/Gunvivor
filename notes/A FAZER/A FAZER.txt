@@ -16,9 +16,13 @@
 	1.3 - hordas de inimigos 
 		1.3.1 - quando não houver mais inimigos na tela, criar mais -- feito
 		1.3.2 - função para criar hordas
+	1.4 - Vida e morte de inimigos
+		1.4.1 - Sistema de dano (balas causam dano) 
+		
 
 3 - subir de nivel
 	3.0 - função de subir de nivel -- FEITO
+	3.1 - Ganhar EXP quando derrotar inimigo
 	
 4 - Armas
 	4.0 - função de armas 
@@ -28,14 +32,21 @@
 			4.2.1 - pistola -- feito
 			4.2.3 - shotgun -- feito, mas melhorar depois
 			4.2.4 - minigun -- feito
-			4.2.5 - bomba 
+			4.2.5 - bomba -- feito
+			4.2.6 - laser
+			4.2.7 - chain lightning
+			4.2.8 - enemy chaser
+			4.2.9 - magnet sphere (terraria)
 
 5 - Interface
 	5.1 Botoes das armas
 		5.1.1 - adicionar arma - feito
 		5.1.2 - remover arma - feito
-	5.2 Abre ao subir de nivel - nao tenho ideia de como fazer
+	5.2 Abre ao subir de nivel  
 		
 6 - hitboxes
 
 7 - state machine dos inimigos
+	7.1 - Iniciar state machine - FEITO
+	7.2 - Fazer com que o inimigo pare perto do jogador - feito
+		7.2.2 - Criar outro tipo de inimigo e faze-lo atirar
