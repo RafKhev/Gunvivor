@@ -44,18 +44,18 @@ max_weapon_level = 15;
 //Pistola
 weapon_pistol_scale = 1.4;
 weapon_pistol_damage = 1;
-weapon_pistol_pierce = 1;
+weapon_pistol_pierce = 0;
 weapon_pistol_speed = 18;
 weapon_pistol_cooldown = 14;
 weapon_pistol_level = 1;
 //Shotgun
-weapon_shotgun_level = 2;
+weapon_shotgun_level = 1;
 weapon_shotgun_speed = 10;
 //Minigun
-weapon_minigun_level = 3;
+weapon_minigun_level = 1;
 weapon_minigun_speed = 15;
 //Bomba
-weapon_bomb_level = 4;
+weapon_bomb_level = 1;
 weapon_bomb_speed = 3;
 //--------------------------------------------//
 //ARMAS
@@ -87,11 +87,11 @@ removeWeapon = function(weapon){
 upgradeWeapon = function(arma, upgrade){
 	switch(arma){
 	case "pistol":
-	
 		if(weapon_pistol_level < max_weapon_level){
 			switch(upgrade){
 				case "Speed":
 					weapon_pistol_speed+=10;
+					show_debug_message("melhorou pistol");
 				default: break;
 			}
 			weapon_pistol_level++
@@ -105,7 +105,9 @@ upgradeWeapon = function(arma, upgrade){
 			switch(upgrade){
 				case "Speed":
 					weapon_shotgun_speed+=10;
-			default: break;
+					show_debug_message("melhorou shot");
+					break;
+				default: break;
 			}
 			weapon_shotgun_level++
 		}else {
@@ -117,7 +119,9 @@ upgradeWeapon = function(arma, upgrade){
 			switch(upgrade){
 				case "Speed":
 					weapon_minigun_speed+=10;
-			default: break;
+					show_debug_message("melhorou mini");
+					break;
+				default: break;
 			}
 			weapon_minigun_level++
 		}else {
@@ -129,7 +133,9 @@ upgradeWeapon = function(arma, upgrade){
 			switch(upgrade){
 				case "Speed":
 					weapon_bomb_speed+=10;
-			default: break;
+					show_debug_message("melhorou bomb")
+					break;
+				default: break;
 			}
 			weapon_bomb_level++
 		}else {
@@ -144,10 +150,14 @@ upgradeWeapon = function(arma, upgrade){
 hasWeapon = function(weapon){ 
 	var l = array_length(weapons);
 	for (i=0;i<l;i++){
-		if weapon == weapons[i]
+		if weapon == weapons[i]{
+			show_debug_message("tem " + string(weapon))
 			return true;
-		else
+		}
+		else{
+			show_debug_message("nao tem " + string(weapon))
 			return false
+		}
 	}
 }
 
@@ -218,9 +228,11 @@ shotgun = function(){
 	var b1 = instance_create_layer(x,y,"tiros",b)
 	b1.image_angle -= 40
 	b1.direction -= 40
+	b1.speed = weapon_shotgun_speed
 	var b2 = instance_create_layer(x,y,"tiros",b)
 	b2.image_angle += 40
 	b2.direction += 40
+	b2.speed = weapon_shotgun_speed
 	instance_create_layer(x,y,"tiros",b)
 	
 }
@@ -233,7 +245,7 @@ minigun = function(){
 	var b1 = instance_create_layer(x,y,"tiros",b)
 	b1.direction = new_angle
 	b1.image_angle = direction
-	
+	b1.speed = weapon_minigun_speed
 }
 	
 bomb = function(){
@@ -241,5 +253,6 @@ bomb = function(){
 	
 	var b1 = instance_create_layer(x,y,"tiros",b)
 	b1.direction = direction
+	b1.speed = weapon_bomb_speed
 }
 

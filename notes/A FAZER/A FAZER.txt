@@ -40,13 +40,14 @@
 			4.2.8 - enemy chaser
 			4.2.9 - magnet sphere (terraria)
 			
-5 - Upgrades
+5 - Upgrades ------------ ARRUMAR AS ARRAYS DA WEAPON LIST QUANDO FOR FAZER UPGRADE
 	5.1 - Variáveis de jogador
 	5.2 - Lista de upgrades
 		5.2.1 - Apagar upgrades (somente debug)
 		5.2.2 - adicionar arma quando seleciona uma upgrade
 		5.2.3 - upgrades diferentes para a mesma arma
 			5.2.3.1 - fazer as variaveis - quase lá
+			
 	5.3 - upgrade de personagem
 	5.4 - personagens diferentes
 
