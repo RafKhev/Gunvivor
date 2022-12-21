@@ -1,7 +1,6 @@
-/// @description Insert description here
+/// @description Armas
 // You can write your code in this editor
 
-vel = 3
 lastKey = 0
 
 for (var i = 0;i<9;i++){
@@ -31,6 +30,34 @@ function my_array_delete(arr, pos) {
 }
 
 //--------------------------------------------//
+//VARIÁVEIS
+//--------------------------------------------//
+vel = 3
+xp_scaling = 1;
+
+player_damage = 1;
+player_weapon_scale = 1;
+max_weapon_level = 15;
+//--------------------------------------------//
+//VARIÁVEIS DAS ARMAS
+//--------------------------------------------//
+//Pistola
+weapon_pistol_scale = 1.4;
+weapon_pistol_damage = 1;
+weapon_pistol_pierce = 1;
+weapon_pistol_speed = 18;
+weapon_pistol_cooldown = 14;
+weapon_pistol_level = 1;
+//Shotgun
+weapon_shotgun_level = 2;
+weapon_shotgun_speed = 10;
+//Minigun
+weapon_minigun_level = 3;
+weapon_minigun_speed = 15;
+//Bomba
+weapon_bomb_level = 4;
+weapon_bomb_speed = 3;
+//--------------------------------------------//
 //ARMAS
 //--------------------------------------------//
 
@@ -56,6 +83,77 @@ removeWeapon = function(weapon){
 		}
 	}
 }
+	
+upgradeWeapon = function(arma, upgrade){
+	switch(arma){
+	case "pistol":
+	
+		if(weapon_pistol_level < max_weapon_level){
+			switch(upgrade){
+				case "Speed":
+					weapon_pistol_speed+=10;
+				default: break;
+			}
+			weapon_pistol_level++
+		}else {
+			show_debug_message("MAX LEVEL REACHED, GET SOME POINTS INSTEAD")	
+		}
+		
+		break;
+	case "shotgun":
+		if(weapon_shotgun_level < max_weapon_level){
+			switch(upgrade){
+				case "Speed":
+					weapon_shotgun_speed+=10;
+			default: break;
+			}
+			weapon_shotgun_level++
+		}else {
+			show_debug_message("MAX LEVEL REACHED, GET SOME POINTS INSTEAD")	
+		}
+		break;
+	case "minigun":
+		if(weapon_minigun_level < max_weapon_level){
+			switch(upgrade){
+				case "Speed":
+					weapon_minigun_speed+=10;
+			default: break;
+			}
+			weapon_minigun_level++
+		}else {
+			show_debug_message("MAX LEVEL REACHED, GET SOME POINTS INSTEAD")	
+		}
+		break;
+	case "bomb":
+		if(weapon_bomb_level < max_weapon_level){
+			switch(upgrade){
+				case "Speed":
+					weapon_bomb_speed+=10;
+			default: break;
+			}
+			weapon_bomb_level++
+		}else {
+			show_debug_message("MAX LEVEL REACHED, GET SOME POINTS INSTEAD")	
+		}
+		break;
+	break;
+	default: break;
+	}
+}
+	
+hasWeapon = function(weapon){ 
+	var l = array_length(weapons);
+	for (i=0;i<l;i++){
+		if weapon == weapons[i]
+			return true;
+		else
+			return false
+	}
+}
+
+//--------------------------------------------//
+//ARMAS
+//--------------------------------------------//
 
 atirar = function(){
 	if ((keyboard_check(vk_up) || keyboard_check(vk_left) || keyboard_check(vk_down) ||  keyboard_check(vk_right))){
@@ -104,8 +202,11 @@ pistol = function(){
 	var bullet1 = obj_bullet
 
 	var b = instance_create_layer(x,y,"tiros",bullet1);
-	b.image_xscale = 1.4
-	b.image_yscale = 1.4
+	b.image_xscale = weapon_pistol_scale * player_weapon_scale
+	b.image_yscale = weapon_pistol_scale * player_weapon_scale
+	b.speed = weapon_pistol_speed
+	b.pierce = weapon_pistol_pierce
+	b.damage = weapon_pistol_damage * player_damage
 	//show_debug_message("atirou");
 	
 }

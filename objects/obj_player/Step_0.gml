@@ -54,7 +54,5 @@ if(keyboard_check(ord("q"))){
 
 //-----------------testes raio
 
-if(keyboard_check(ord("q"))){
-	
-}
+
 
