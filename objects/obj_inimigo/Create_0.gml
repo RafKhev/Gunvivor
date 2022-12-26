@@ -2,8 +2,17 @@
 // You can write your code in this editor
 
 exp_concedido = 100
-speed = 1
 controle_exp = obj_level_control;
+
+status_burning = false
+status_frozen = false
+status_immune = false
+status_slow = false
+
+health = 5
+
+speed = 1
+//State machine
 state = "chase"
 
 stateMachine = function(){
