@@ -3,11 +3,11 @@
 
 lastKey = 0
 
-for (var i = 0;i<9;i++){
+for (var i = 0;i<9;i++){ //Arruma todos alarmes
 	alarm[i] = 0;	
 }
 
-setDirection = function(dir){
+setDirection = function(dir){ //Movimento
 	if (!keyboard_check(vk_space)){
 		lastKey = keyboard_key
 		direction = dir
@@ -17,7 +17,7 @@ setDirection = function(dir){
 	}
 }
 
-function my_array_delete(arr, pos) {
+function my_array_delete(arr, pos) { 
     var arr_len = array_length(arr);
     if (arr_len > 0 && pos >= 0 && pos < arr_len) {
         var new_arr = array_create(arr_len-1);
@@ -30,10 +30,10 @@ function my_array_delete(arr, pos) {
 }
 
 //--------------------------------------------//
-//VARIÁVEIS
+//VARIÁVEIS DO JOGADOR
 //--------------------------------------------//
 vel = 3
-xp_scaling = 1;
+// = 1;
 
 player_damage = 1;
 player_weapon_scale = 1;
@@ -41,6 +41,7 @@ max_weapon_level = 15;
 //--------------------------------------------//
 //VARIÁVEIS DAS ARMAS
 //--------------------------------------------//
+
 //Pistola
 weapon_pistol_scale = 1.4;
 weapon_pistol_damage = 1;
@@ -49,17 +50,18 @@ weapon_pistol_speed = 18;
 weapon_pistol_cooldown = 14;
 weapon_pistol_level = 1;
 //Shotgun
-weapon_shotgun_level = 1;
+weapon_shotgun_level = 0;
 weapon_shotgun_speed = 10;
 //Minigun
-weapon_minigun_level = 1;
+weapon_minigun_level = 0;
 weapon_minigun_speed = 15;
 //Bomba
-weapon_bomb_level = 1;
+weapon_bomb_level = 0;
 weapon_bomb_speed = 3;
-//--------------------------------------------//
-//ARMAS
-//--------------------------------------------//
+
+//##########################################//	
+//               LISTA DE ARMAS             //
+//##########################################//	
 
 //weapons = ["minigun","shotgun","pistol"];
 weapons = ["pistol"]
@@ -67,11 +69,29 @@ weapons = ["pistol"]
 //cds = [1, 25, 17]
 cds = [17]
 
+//##########################################//	
+//          MANIPULAR DAS ARMAS             //
+//##########################################//
 
 addWeapon = function(weapon, _cd){
 	array_push(weapons, weapon)
 	array_push(cds, _cd)
-	show_debug_message("adiciounou " + weapon + " recarga: " + string(_cd)) 
+	show_debug_message("adiciounou " + weapon + " recarga: " + string(_cd))
+	switch(weapon){
+		case "pistol":
+			weapon_pistol_level++
+			break
+		case "shotgun":
+			weapon_shotgun_level++
+			break
+		case "minigun":
+			weapon_minigun_level++
+			break
+		case "bomb":
+			weapon_bomb_level++
+			break
+		default: break
+	}
 }
 
 removeWeapon = function(weapon){
@@ -83,10 +103,11 @@ removeWeapon = function(weapon){
 		}
 	}
 }
-	
+
 upgradeWeapon = function(arma, upgrade){
 	switch(arma){
 	case "pistol":
+
 		if(weapon_pistol_level < max_weapon_level){
 			switch(upgrade){
 				case "Speed":
@@ -147,23 +168,32 @@ upgradeWeapon = function(arma, upgrade){
 	}
 }
 	
-hasWeapon = function(weapon){ 
-	var l = array_length(weapons);
-	for (i=0;i<l;i++){
-		if weapon == weapons[i]{
-			show_debug_message("tem " + string(weapon))
-			return true;
-		}
-		else{
-			show_debug_message("nao tem " + string(weapon))
-			return false
-		}
+//##########################################//	
+	
+has_weapon = function(weapon){ 
+	if get_weapon_level(weapon) > 0{
+		return true
+	}else
+		return false
+}
+
+get_weapon_level = function(weap){
+	switch(weap){
+		case "pistol":
+			return weapon_pistol_level;
+		case "shotgun":
+			return weapon_shotgun_level;
+		case "minigun":
+			return weapon_minigun_level;
+		case "bomb":
+			return weapon_bomb_level;
+		default: break;
 	}
 }
 
-//--------------------------------------------//
-//ARMAS
-//--------------------------------------------//
+//##########################################//	
+//                   ARMAS                  //
+//##########################################//	
 
 atirar = function(){
 	if ((keyboard_check(vk_up) || keyboard_check(vk_left) || keyboard_check(vk_down) ||  keyboard_check(vk_right))){
@@ -233,8 +263,8 @@ shotgun = function(){
 	b2.image_angle += 40
 	b2.direction += 40
 	b2.speed = weapon_shotgun_speed
-	instance_create_layer(x,y,"tiros",b)
-	
+	var b3 = instance_create_layer(x,y,"tiros",b)
+	b3.speed = weapon_shotgun_speed
 }
 
 minigun = function(){

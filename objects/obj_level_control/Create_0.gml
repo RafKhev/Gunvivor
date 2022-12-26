@@ -48,6 +48,8 @@ levelup = function(){
 		upgradeItems[i] = weapon_list[r];
 		upgradeSpriteIndex[i] = r;
 		
+		//Verifica a lista de upgrades
+		
 		switch (upgradeItems[i]){
 			case "pistol":
 				array_copy(upgrade_list,0,upgrade_list_pistol,0,array_length(upgrade_list_pistol));
@@ -69,9 +71,9 @@ levelup = function(){
 		}until(b != array_length(upgrade_list));
 		
 		upgradeTypes[i] = upgrade_list[b];
-		array_push(level_list, get_weapon_level(upgradeItems[i]))
+		array_push(level_list, p.get_weapon_level(upgradeItems[i]))
 		upgradeItemsCooldown[i] = cooldown_list[r];
-		show_debug_message(string(upgradeItems[i]) + ":" + string(get_weapon_level(upgradeItems[i])))
+		show_debug_message(string(upgradeItems[i]) + ":" + string(p.get_weapon_level(upgradeItems[i])))
 		
 		//show_debug_message(string(i) + ":" + upgradeItems[i] + ":" + upgradeItemsCooldown[i]);
 	}
@@ -81,21 +83,8 @@ levelup = function(){
 	
 	up_text = true
 	level+=1
-	next_level = floor(next_level * 1.8) //mudar pra 1.8 depois
 	
-	
+	next_level = floor(next_level * 1) //mudar pra 1.8 depois
 }
 
-get_weapon_level = function(weap){
-	switch(weap){
-		case "pistol":
-			return p.weapon_pistol_level;
-		case "shotgun":
-			return p.weapon_shotgun_level;
-		case "minigun":
-			return p.weapon_minigun_level;
-		case "bomb":
-			return p.weapon_bomb_level;
-		default: break;
-	}
-}
+

@@ -43,8 +43,8 @@
 5 - Upgrades ------------ ARRUMAR AS ARRAYS DA WEAPON LIST QUANDO FOR FAZER UPGRADE
 	5.1 - Variáveis de jogador
 	5.2 - Lista de upgrades
-		5.2.1 - Apagar upgrades (somente debug)
-		5.2.2 - adicionar arma quando seleciona uma upgrade
+		5.2.1 - Apagar upgrades (somente debug) -- feito
+		5.2.2 - adicionar arma quando seleciona uma upgrade -- feito 
 		5.2.3 - upgrades diferentes para a mesma arma
 			5.2.3.1 - fazer as variaveis - quase lá
 			
@@ -64,3 +64,9 @@
 	7.1 - Iniciar state machine - FEITO
 	7.2 - Fazer com que o inimigo pare perto do jogador - feito
 		7.2.2 - Criar outro tipo de inimigo e faze-lo atirar
+		
+		
+//LISTA DE SWITCH 
+
+Player - função upgrade_weapon, get_weapon_level e add_weapon
+Level Controller - função level_up linha 53
