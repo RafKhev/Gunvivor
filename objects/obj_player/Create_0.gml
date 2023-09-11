@@ -3,11 +3,11 @@
 
 lastKey = 0
 
-for (var i = 0;i<9;i++){ //Arruma todos alarmes
-	alarm[i] = 0;	
+for (var _i = 0;_i<9;_i++){ //Arruma todos alarmes
+	alarm[_i] = 0;	
 }
 
-setDirection = function(dir){ //Movimento
+setDirection = function(_dir){ //Movimento
 	if (!keyboard_check(vk_space)){
 		lastKey = keyboard_key
 		direction = dir
@@ -17,7 +17,7 @@ setDirection = function(dir){ //Movimento
 	}
 }
 
-function my_array_delete(arr, pos) { 
+function my_array_delete(_arr, _pos) { 
     var arr_len = array_length(arr);
     if (arr_len > 0 && pos >= 0 && pos < arr_len) {
         var new_arr = array_create(arr_len-1);
@@ -33,38 +33,84 @@ function my_array_delete(arr, pos) {
 //VARIÁVEIS DO JOGADOR
 //--------------------------------------------//
 vel = 3
-// = 1;
-
 player_damage = 1;
 player_weapon_scale = 1;
 max_weapon_level = 15;
 //--------------------------------------------//
-//VARIÁVEIS DAS ARMAS
+/*VARIÁVEIS DAS ARMAS
+
+scale: tamanho do projétil
+dano: dano causado
+pierce: inimigos atingidos antes do projétil ser destruido
+velocity: velocidade de movimento do projétil
+cooldown: frames até o próximo disparo
+min_cooldown: menor intervalo possível
+level: nível da arma
+*/
 //--------------------------------------------//
 
-//Pistola
-weapon_pistol_scale = 1.4;
-weapon_pistol_damage = 1;
-weapon_pistol_pierce = 0;
-weapon_pistol_speed = 18;
-weapon_pistol_cooldown = 14;
-weapon_pistol_level = 1;
-//Shotgun
-weapon_shotgun_level = 0;
-weapon_shotgun_speed = 10;
-//Minigun
-weapon_minigun_level = 0;
-weapon_minigun_speed = 15;
-//Bomba
-weapon_bomb_level = 0;
-weapon_bomb_speed = 3;
+pistol = {
+	name: "Pistol",
+	scale: 1.4, 
+	damage: 1,
+	pierce: 0,
+	velocity: 18,
+	cooldown: 14,
+	min_cooldown: 3,
+	level: 0,
+	max_level: 10
+}
 
+shotgun = {
+	name: "Shotgun",
+	scale: 0.8,
+	amount: 4,
+	spread_reduc: 15,
+	damage: 6,
+	pierce: 0,
+	velocity: 10,
+	cooldown: 22,
+	min_cooldown: 6,
+	level: 0,
+	max_level: 10
+}
+
+minigun = {
+	name: "Minigun",
+	scale: 1.4, 
+	damage: 1,
+	pierce: 0,
+	velocity: 18,
+	cooldown: 14,
+	min_cooldown: 3,
+	//Escalonamento
+	size_scale: 1.4, 
+	damage_scale: 0.4,
+	pierce_scale: 0,
+	velocity_scale: 3,
+	cooldown_scale: 2,
+	//Nivel
+	level: 0,
+	max_level: 10
+}
+
+bomb = {
+	name: "Bomb",
+	scale: 1.4, 
+	damage: 1,
+	pierce: 0,
+	velocity: 18,
+	cooldown: 14,
+	min_cooldown: 3,
+	level: 0,
+	max_level: 10
+}
 //##########################################//	
 //               LISTA DE ARMAS             //
 //##########################################//	
 
 //weapons = ["minigun","shotgun","pistol"];
-weapons = ["pistol"]
+weapons = ["shotgun"]
 
 //cds = [1, 25, 17]
 cds = [17]
@@ -76,19 +122,19 @@ cds = [17]
 addWeapon = function(weapon, _cd){
 	array_push(weapons, weapon)
 	array_push(cds, _cd)
-	show_debug_message("adiciounou " + weapon + " recarga: " + string(_cd))
+	//show_debug_message("adiciounou " + weapon + " recarga: " + string(_cd))
 	switch(weapon){
 		case "pistol":
-			weapon_pistol_level++
+			pistol.level++
 			break
 		case "shotgun":
-			weapon_shotgun_level++
+			shotgun.level++
 			break
 		case "minigun":
-			weapon_minigun_level++
+			minigun.level++
 			break
 		case "bomb":
-			weapon_bomb_level++
+			bomb.level++
 			break
 		default: break
 	}
@@ -104,14 +150,23 @@ removeWeapon = function(weapon){
 	}
 }
 
+upgrade_weapon = function(_arma, _tipo){
+	if(_arma.level < _arma.max_level){
+		switch(upgrade){
+			case "scale":
+				break
+			default: break;
+		}
+	}
+}
 upgradeWeapon = function(arma, upgrade){
 	switch(arma){
 	case "pistol":
 
-		if(weapon_pistol_level < max_weapon_level){
+		if(pistol.level < pistol.max_level){
 			switch(upgrade){
 				case "Speed":
-					weapon_pistol_speed+=10;
+					pistol.velocity+=10;
 					show_debug_message("melhorou pistol");
 				default: break;
 			}
@@ -122,7 +177,7 @@ upgradeWeapon = function(arma, upgrade){
 		
 		break;
 	case "shotgun":
-		if(weapon_shotgun_level < max_weapon_level){
+		if(shotgun.level < shotgun.level){
 			switch(upgrade){
 				case "Speed":
 					weapon_shotgun_speed+=10;
@@ -242,29 +297,31 @@ pistol = function(){
 	var bullet1 = obj_bullet
 
 	var b = instance_create_layer(x,y,"tiros",bullet1);
-	b.image_xscale = weapon_pistol_scale * player_weapon_scale
-	b.image_yscale = weapon_pistol_scale * player_weapon_scale
-	b.speed = weapon_pistol_speed
-	b.pierce = weapon_pistol_pierce
-	b.damage = weapon_pistol_damage * player_damage
+	b.image_xscale = pistol.scale * player_weapon_scale
+	b.image_yscale = pistol.scale * player_weapon_scale
+	b.speed = pistol.velocity
+	b.pierce = pistol.pierce
+	b.damage = pistol.damage * player_damage
 	//show_debug_message("atirou");
 	
 }
 
 shotgun = function(){
 	
+	random_set_seed(random(60))
+	
 	var b = obj_bullet
 	
-	var b1 = instance_create_layer(x,y,"tiros",b)
-	b1.image_angle -= 40
-	b1.direction -= 40
-	b1.speed = weapon_shotgun_speed
-	var b2 = instance_create_layer(x,y,"tiros",b)
-	b2.image_angle += 40
-	b2.direction += 40
-	b2.speed = weapon_shotgun_speed
-	var b3 = instance_create_layer(x,y,"tiros",b)
-	b3.speed = weapon_shotgun_speed
+	var initial_angle = direction
+	var spd = shotgun.velocity
+
+	repeat(shotgun.amount){
+		var angle = random_range(-20-shotgun.spread_reduc,20+shotgun.spread_reduc)
+		var b1 = instance_create_layer(x,y,"tiros",b)
+		b1.image_angle -= angle 
+		b1.direction -= angle 
+		b1.speed = spd
+	}
 }
 
 minigun = function(){
@@ -275,7 +332,7 @@ minigun = function(){
 	var b1 = instance_create_layer(x,y,"tiros",b)
 	b1.direction = new_angle
 	b1.image_angle = direction
-	b1.speed = weapon_minigun_speed
+	b1.speed = minigun.velocity
 }
 	
 bomb = function(){
@@ -283,6 +340,6 @@ bomb = function(){
 	
 	var b1 = instance_create_layer(x,y,"tiros",b)
 	b1.direction = direction
-	b1.speed = weapon_bomb_speed
+	b1.speed = bomb.velocity
 }
 

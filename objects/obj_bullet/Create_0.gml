@@ -7,6 +7,3 @@ alarm[0] = 1
 damage = 1
 pierce = 1;
 
-causa_dano = function(instance){
-	instance.health -= damage
-}

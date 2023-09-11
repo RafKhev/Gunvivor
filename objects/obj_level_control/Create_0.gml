@@ -30,7 +30,7 @@ upgrade_list_bomb = ["Speed"]
 //upgrade_list_pistol
 
 weapon_list = ["pistol", "shotgun", "minigun", "bomb"];
-cooldown_list = [p.weapon_pistol_cooldown, 20, 7, 40];
+cooldown_list = [p.pistol.cooldown, p.shotgun.cooldown, p.minigun.cooldown, p.bomb.cooldown];
 
 
 //-------------------------------------------------------//
@@ -45,12 +45,12 @@ levelup = function(){
 			r = irandom_range(0,array_length(weapon_list));
 		}until(r != array_length(weapon_list));
 		
-		upgradeItems[i] = weapon_list[r];
-		upgradeSpriteIndex[i] = r;
+		upgrade_items[i] = weapon_list[r];
+		upgrade_sprite_index[i] = r;
 		
 		//Verifica a lista de upgrades
 		
-		switch (upgradeItems[i]){
+		switch (upgrade_items[i]){
 			case "pistol":
 				array_copy(upgrade_list,0,upgrade_list_pistol,0,array_length(upgrade_list_pistol));
 				break;

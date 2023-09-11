@@ -5,7 +5,7 @@
 
 draw_text(20,60,"Level: "+ string(level)+"\nEXP: "+string(exp_current)+"/"+string(next_level))
 
-weapon_sprite = spr_weapon_sprites;
+var weapon_sprite = spr_weapon_sprites;
 
 if (upgradeWindowActive){
 	draw_sprite_stretched_ext(spr_upgrade, image_index, 32, 32, 128, 128, c_white, 1);

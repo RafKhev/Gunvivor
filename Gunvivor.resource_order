@@ -1,0 +1,22 @@
+{
+  "FolderOrderSettings": [],
+  "ResourceOrderSettings": [
+    {"name":"spr_TILE","order":10,"path":"sprites/spr_TILE/spr_TILE.yy",},
+    {"name":"obj_inimigo","order":2,"path":"objects/obj_inimigo/obj_inimigo.yy",},
+    {"name":"obj_weapon_btn","order":6,"path":"objects/obj_weapon_btn/obj_weapon_btn.yy",},
+    {"name":"obj_controller","order":4,"path":"objects/obj_controller/obj_controller.yy",},
+    {"name":"obj_explosao","order":2,"path":"objects/obj_explosao/obj_explosao.yy",},
+    {"name":"spr_explosao","order":2,"path":"sprites/spr_explosao/spr_explosao.yy",},
+    {"name":"obj_level_control","order":5,"path":"objects/obj_level_control/obj_level_control.yy",},
+    {"name":"spr_bomba","order":1,"path":"sprites/spr_bomba/spr_bomba.yy",},
+    {"name":"obj_aviso","order":3,"path":"objects/obj_aviso/obj_aviso.yy",},
+    {"name":"spr_frame","order":2,"path":"sprites/spr_frame/spr_frame.yy",},
+    {"name":"spr_btn","order":1,"path":"sprites/spr_btn/spr_btn.yy",},
+    {"name":"spr_inimigo","order":2,"path":"sprites/spr_inimigo/spr_inimigo.yy",},
+    {"name":"obj_bullet","order":1,"path":"objects/obj_bullet/obj_bullet.yy",},
+    {"name":"spr_weapon_sprites","order":9,"path":"sprites/spr_weapon_sprites/spr_weapon_sprites.yy",},
+    {"name":"spr_upgrade","order":8,"path":"sprites/spr_upgrade/spr_upgrade.yy",},
+    {"name":"obj_selector","order":7,"path":"objects/obj_selector/obj_selector.yy",},
+    {"name":"spr_select","order":3,"path":"sprites/spr_select/spr_select.yy",},
+  ],
+}
